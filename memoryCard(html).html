@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Memory Card Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+        body {
+            margin-right: 2%;
+            margin-left: 2%;
+        }
+        #cardsContainer {
+            display: flex;
+            flex-wrap: wrap;
+            width: 700px;
+            height: 550px;
+            margin-left: 20%;
+            background-color: rgb(170, 169, 169);
+        }
+        #progressContainer{
+            text-align: right;
+        }
+        #steps {
+            margin-right: 3%;
+        }
+        i {
+            position: relative;
+            top: 5px;
+        }
+        .memoryCard {
+            width: calc(25% - 15px);
+            height: calc(33.33% - 15px);
+            width: 23%;
+            margin: 1% auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: .5s;
+        }
+        .memoryCard.flip {
+            transform: rotateY(180deg);
+        }
+        .front-face, .back-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid white;
+            backface-visibility: hidden;
+        }
+        #progressContainer {
+            width: 20%;
+            float: right;
+            text-align: center;
+            max-height: fit-content;
+        }
+        #hourGlass {
+            display: inline-block;
+        }
+        .rotatedHour {
+            position: relative;
+            transition: 2s;
+            transform: rotateZ(180deg);
+            animation: rotate linear;
+            animation-duration: 300ms;
+        }
+        .rotatedHour .fa-hourglass-end{
+            color: rgb(97, 173, 248);
+            top: -3px;
+        }
+        .activeStep .fa-shoe-prints {
+            color: rgb(115, 226, 124);
+        }
+        .front-face {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+        <section id="progressContainer">
+            <div id="hourGlass">
+                <i class="fas fa-hourglass-end endHourGlass" style="font-size: 1.5em"></i>
+            </div>
+            <span id="TwoDigitTimer"> 00 : 00 : 00</span>
+            <br>
+            <br>
+            <section id="steps">
+                <i class="fas fa-shoe-prints fa-rotate-270"  style="font-size: 1.5em"></i>
+                <span id="numberOfSteps"> 0 step(s)</span>
+            </section>
+        </section>        
+    <br>
+    <section id="cardsContainer">
+        <div class="memoryCard" data-name="red">
+            <img class="front-face" src="http://via.placeholder.com/120/FF0000/FFFFFF?text=1"  alt="front-face">
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="red">
+            <img class="front-face" src="http://via.placeholder.com/120/FF0000/FFFFFF?text=1" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="blue">
+            <img class="front-face" src="http://via.placeholder.com/120/0000FF/FFFFFF?text=2" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="blue">
+            <img class="front-face" src="http://via.placeholder.com/120/0000FF/FFFFFF?text=2" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="green">
+            <img class="front-face" src="http://via.placeholder.com/120/008000/FFFFFF?text=3" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="green">
+            <img class="front-face" src="http://via.placeholder.com/120/008000/FFFFFF?text=3" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="paleYellow">
+            <img class="front-face" src="http://via.placeholder.com/120/FADA5E/FFFFFF?text=4" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="paleYellow">
+            <img class="front-face" src="http://via.placeholder.com/120/FADA5E/FFFFFF?text=4" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="maroon">
+            <img class="front-face" src="http://via.placeholder.com/120/80000000/FFFFFF?text=5" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="maroon">
+            <img class="front-face" src="http://via.placeholder.com/120/80000000/FFFFFF?text=5" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="orange">
+            <img class="front-face" src="http://via.placeholder.com/120/FF880E4F/FFFFFF?text=6" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+        <div class="memoryCard" data-name="orange">
+            <img class="front-face" src="http://via.placeholder.com/120/FF880E4F/FFFFFF?text=6" alt="front-face" >
+            <img class="back-face" src="http://via.placeholder.com/120/000009/FFFFFF?text=Click ME" alt="back-face"> 
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>
